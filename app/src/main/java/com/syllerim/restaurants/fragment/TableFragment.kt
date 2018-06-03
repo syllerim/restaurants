@@ -3,7 +3,6 @@ package com.syllerim.restaurants.fragment
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.Fragment
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
@@ -58,8 +57,7 @@ class TableFragment: Fragment() {
         val adapter = table_list?.adapter as? TableRecyclerViewAdapter
         adapter?.onClickListener = View.OnClickListener {
             val index = table_list.getChildAdapterPosition(it)
-            val table = Tables.allItems[index]
-            onTableSelectedListener?.onTableSelected(table, index)
+            onTableSelectedListener?.onTableSelected(index)
         }
     }
 
@@ -89,6 +87,6 @@ class TableFragment: Fragment() {
     }
 
     interface OnTableSelectedListener {
-        fun onTableSelected(table: Table, position: Int)
+        fun onTableSelected(position: Int)
     }
 }

@@ -1,13 +1,12 @@
 package com.syllerim.restaurants.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.ViewGroup
 import com.syllerim.restaurants.R
 import com.syllerim.restaurants.fragment.TableFragment
 import com.syllerim.restaurants.fragment.TableFragment.OnTableSelectedListener
-import com.syllerim.restaurants.model.Table
-
 
 class TableActivity() : AppCompatActivity(), OnTableSelectedListener {
 
@@ -28,9 +27,8 @@ class TableActivity() : AppCompatActivity(), OnTableSelectedListener {
         }
     }
 
-    override fun onTableSelected(table: Table, position: Int) {
-        val intent = TableDetailActivity.intent(this, position)
-        startActivity(intent)
+    override fun onTableSelected(position: Int) {
+        startActivity(TableDetailActivity.intent(this, position))
     }
 
 }
