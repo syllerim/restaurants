@@ -1,6 +1,6 @@
 package com.syllerim.restaurants.model
 
-object Cities {
+object Tables {
 
     private val tables: List<Table> = listOf(
             Table("Table 1", numberPlaces = 2),
@@ -12,6 +12,9 @@ object Cities {
             Table("Table 7", numberPlaces = 8),
             Table("Table 8", numberPlaces = 8)
     )
+
+    var allItems = tables
+        private set
 
     val count
         get() = tables.size
