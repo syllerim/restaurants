@@ -3,14 +3,14 @@ package com.syllerim.restaurants.model
 object Tables {
 
     private val tables: List<Table> = listOf(
-            Table("Table 1", numberPlaces = 2),
-            Table("Table 2", numberPlaces = 2),
-            Table("Table 3", numberPlaces = 4),
-            Table("Table 4", numberPlaces = 5),
-            Table("Table 5", numberPlaces = 6),
-            Table("Table 6", numberPlaces = 6),
-            Table("Table 7", numberPlaces = 8),
-            Table("Table 8", numberPlaces = 8)
+            Table(1,"Table 1"),
+            Table(2,"Table 2"),
+            Table(3,"Table 3"),
+            Table(4,"Table 4"),
+            Table(5,"Table 5"),
+            Table(6,"Table 6"),
+            Table(7,"Table 7"),
+            Table(8,"Table 8")
     )
 
     var allItems = tables

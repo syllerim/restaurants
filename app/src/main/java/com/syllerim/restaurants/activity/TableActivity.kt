@@ -1,14 +1,15 @@
 package com.syllerim.restaurants.activity
 
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.ViewGroup
 import com.syllerim.restaurants.R
 import com.syllerim.restaurants.fragment.TableFragment
-import kotlinx.android.synthetic.main.activity_table.*
+import com.syllerim.restaurants.fragment.TableFragment.OnTableSelectedListener
+import com.syllerim.restaurants.model.Table
 
-class TableActivity : AppCompatActivity() {
+
+class TableActivity() : AppCompatActivity(), OnTableSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,4 +27,10 @@ class TableActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onTableSelected(table: Table, position: Int) {
+        val intent = TableDetailActivity.intent(this, position)
+        startActivity(intent)
+    }
+
 }

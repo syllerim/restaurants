@@ -1,5 +1,7 @@
 package com.syllerim.restaurants.fragment
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.Fragment
@@ -9,8 +11,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-
 import com.syllerim.restaurants.R
 import com.syllerim.restaurants.adapter.TableRecyclerViewAdapter
 import com.syllerim.restaurants.model.Table
@@ -49,7 +49,7 @@ class TableFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        table_list.layoutManager = GridLayoutManager(activity, 2) // resources.getInteger(R.integer.table_columns
+        table_list.layoutManager = GridLayoutManager(activity, 2)
         table_list.itemAnimator = DefaultItemAnimator()
         tableData = Tables.allItems
     }
@@ -60,6 +60,25 @@ class TableFragment: Fragment() {
             val index = table_list.getChildAdapterPosition(it)
             val table = Tables.allItems[index]
             onTableSelectedListener?.onTableSelected(table, index)
+        }
+    }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        commonAttach(context as Activity)
+    }
+
+    override fun onAttach(activity: Activity?) {
+        super.onAttach(activity)
+        commonAttach(activity)
+    }
+
+    private fun commonAttach(activity: Activity?) {
+        if (activity is OnTableSelectedListener) {
+            onTableSelectedListener = activity
+        }
+        else {
+            onTableSelectedListener = null
         }
     }
 
